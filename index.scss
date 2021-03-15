@@ -1,0 +1,284 @@
+* {
+  margin: 0;
+  font-family: "Recursive", sans-serif;
+}
+
+$hoverPrimaryBG: rgb(224, 91, 91);
+$hoverPrimaryBGOP: rgba(224, 91, 91, 0.726);
+$hoverPrimaryTxt: rgb(223, 223, 223);
+
+.header {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 80px;
+  background-color: black;
+  border-bottom: 1px solid $hoverPrimaryBG;
+  .header__left {
+    img {
+      width: 50px;
+      height: 50px;
+      transition: 500ms;
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  .header__right {
+    .menu {
+      -webkit-filter: invert(100%);
+      filter: invert(100%);
+      width: 50px;
+      transition: 300ms;
+
+      &:hover {
+        cursor: pointer;
+        border: 1px solid $hoverPrimaryBG;
+        -webkit-filter: invert(0%);
+        filter: invert(0%);
+      }
+    }
+  }
+}
+
+.indexHero {
+  width: 100%;
+  background-color: black;
+
+  img {
+    width: 100%;
+  }
+}
+
+.indexButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 55.5vh;
+  background-color: black;
+
+  button {
+    color: white;
+    width: 80%;
+    height: 60px;
+    margin-bottom: 7px;
+    outline: none;
+    border: none;
+    transition: 300ms;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid $hoverPrimaryBG;
+    &:hover {
+      cursor: pointer;
+      background-color: $hoverPrimaryBG;
+      transform: translateX(10px);
+      color: $hoverPrimaryTxt;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 2px 1px white;
+    }
+  }
+}
+
+.agentContainer {
+  height: 500px;
+  width: 100%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
+
+  .agentContainer__info {
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    transition: 500ms;
+    transform: translateX(-20px);
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+      background-color: $hoverPrimaryBGOP;
+      transform: translateX(0px);
+    }
+    .agentContainer__top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10%;
+      width: 100%;
+      font-size: 30px;
+      font-weight: bold;
+
+      img {
+        width: 30px;
+        margin-left: 20px;
+      }
+    }
+
+    .agentContainer__desc {
+      height: 20%;
+      padding: 20px 50px 0px 50px;
+    }
+    .agentContainer__abilities {
+      height: 70%;
+      p {
+        margin-bottom: 10px;
+        padding: 0 50px;
+      }
+    }
+  }
+}
+
+.agentsHeader {
+  color: $hoverPrimaryBG;
+  height: 60px;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  background-color: black;
+}
+
+.mapsHeader {
+  color: $hoverPrimaryBG;
+  height: 60px;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  background-color: black;
+}
+
+.weaponsHeader {
+  color: $hoverPrimaryBG;
+  height: 60px;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  background-color: black;
+}
+
+.mapContainer {
+  width: 100%;
+  height: 400px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+  color: white;
+  .coords {
+    font-size: 12px;
+    font-style: italic;
+    color: $hoverPrimaryTxt;
+  }
+  p {
+    margin-bottom: 5px;
+    margin-left: 2px;
+    padding-top: 2px;
+  }
+}
+
+.weaponsContainer {
+  color: white;
+  height: 400px;
+  width: 100%;
+  background-color: black;
+
+  border-bottom: 3px solid $hoverPrimaryBG;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 200px;
+    border: 1px solid $hoverPrimaryBG;
+  }
+}
+
+.weaponsContainerTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+
+  img {
+    width: 50%;
+  }
+}
+.weaponsContainerBottom {
+  display: flex;
+  height: 50%;
+  width: 100%;
+
+  .bottom__left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bottom__right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $hoverPrimaryBG;
+  }
+}
+
+.menuOverlay {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  opacity: 0.9;
+  top: 0;
+  width: 100vw;
+  height: 100ch;
+  background-color: $hoverPrimaryBG;
+
+  button {
+    color: rgb(0, 0, 0);
+    width: 80%;
+    height: 60px;
+    margin-bottom: 7px;
+    outline: none;
+    border: none;
+    transition: 300ms;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid black;
+    font-size: 30px;
+    &:hover {
+      cursor: pointer;
+      background-color: $hoverPrimaryBG;
+      transform: translateX(10px);
+      color: $hoverPrimaryTxt;
+      font-size: 30px;
+      font-weight: bold;
+      box-shadow: 2px 1px white;
+    }
+  }
+}
+
+.show {
+  display: flex;
+}
+
+.exit:hover {
+  cursor: pointer;
+}
