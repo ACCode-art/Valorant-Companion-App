@@ -1,18 +1,16 @@
 const indexAgents = document.querySelector(".indexAgents");
 const indexMaps = document.querySelector(".indexMaps");
 const indexWeapons = document.querySelector(".indexWeapons");
+const indexSprays = document.querySelector(".indexSprays");
 const button = document.querySelectorAll("button");
 
 const menu = document.querySelector(".menu");
 const exit = document.querySelector(".exit");
 const menuOverlay = document.querySelector(".menuOverlay");
 
-console.log(button);
-
 const loadAPI = async () => {
   const res = await fetch("https://valorant-api.com/v1/agents");
   info = await res.json();
-  console.log(info);
 
   const { data } = info;
 
@@ -25,8 +23,6 @@ const loadAPI = async () => {
       displayIconSmall,
       characterTags,
     } = agent;
-
-    console.log(agent);
 
     const HTML = `<div
     class="agentContainer"
@@ -44,7 +40,11 @@ const loadAPI = async () => {
       ${description}
       </div>
       <div class="agentContainer__abilities">
-   
+        ${abilities
+          .map((ability) => {
+            return `<p class='agentAbilityName'>${ability.displayName}</p><p class= agentAbilitydesc>${ability.description}</p>`;
+          })
+          .join("")}
       </div>
     </div>
   </div>`;
@@ -56,7 +56,6 @@ const loadAPI = async () => {
 const loadMapsAPI = async () => {
   const res = await fetch("https://valorant-api.com/v1/maps");
   info = await res.json();
-  console.log(info);
 
   const { data } = info;
 
@@ -86,7 +85,6 @@ const loadWeaponsAPI = async () => {
     const {
       weaponStats: { fireRate },
     } = gun;
-    console.log(fireRate);
 
     const HTML = `<div class="weaponsContainer">
     <div class="weaponsContainerTop">
@@ -108,9 +106,32 @@ const loadWeaponsAPI = async () => {
   });
 };
 
+const loadSprayAPI = async () => {
+  const res = await fetch("https://valorant-api.com/v1/sprays");
+  info = await res.json();
+
+  const { data } = info;
+
+  data.map((spray) => {
+    const { fullIcon, displayName } = spray;
+
+    const HTML = ` <div
+    class="sprayContainer"
+    style="
+      background-image: url(${fullIcon});
+    "
+  >
+    <h2>${displayName}</h2>
+  </div>`;
+
+    indexSprays.insertAdjacentHTML("afterbegin", HTML);
+  });
+};
+
 loadAPI();
 loadMapsAPI();
 loadWeaponsAPI();
+loadSprayAPI();
 
 button.forEach((e) => {
   const linkText = e.textContent.toLowerCase();

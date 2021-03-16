@@ -21,3 +21,8 @@ app.get("/weapons", (req, res) => {
 app.get("/maps", (req, res) => {
   res.sendFile("./maps.html", { root: __dirname });
 });
+app.get("/sprays", (req, res) => {
+  res.sendFile("./sprays.html", { root: __dirname });
+});
+
+console.log("started");

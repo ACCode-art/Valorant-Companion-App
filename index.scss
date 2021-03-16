@@ -3,24 +3,37 @@
   font-family: "Recursive", sans-serif;
 }
 
-$hoverPrimaryBG: rgb(224, 91, 91);
-$hoverPrimaryBGOP: rgba(224, 91, 91, 0.726);
+body {
+  background-color: black;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+$hoverPrimaryBG: #dc3d4b;
+$hoverPrimaryBGOP: rgba(250, 68, 83, 0.603);
 $hoverPrimaryTxt: rgb(223, 223, 223);
+$accent: rgb(255, 255, 255);
 
 .header {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5%;
   height: 80px;
   background-color: black;
   border-bottom: 1px solid $hoverPrimaryBG;
+
   .header__left {
     img {
       width: 50px;
       height: 50px;
       transition: 500ms;
+      margin-left: 40px;
 
       &:hover {
         cursor: pointer;
@@ -35,12 +48,11 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
       filter: invert(100%);
       width: 50px;
       transition: 300ms;
+      margin-right: 40px;
 
       &:hover {
         cursor: pointer;
-        border: 1px solid $hoverPrimaryBG;
-        -webkit-filter: invert(0%);
-        filter: invert(0%);
+        transform: scale(1.2);
       }
     }
   }
@@ -49,9 +61,11 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
 .indexHero {
   width: 100%;
   background-color: black;
+  padding-top: 90px;
 
   img {
     width: 100%;
+    animation: heroAnimation 500ms ease-in;
   }
 }
 
@@ -81,18 +95,18 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
       color: $hoverPrimaryTxt;
       font-size: 20px;
       font-weight: bold;
-      box-shadow: 2px 1px white;
     }
   }
 }
 
 .agentContainer {
-  height: 500px;
+  height: 700px;
   width: 100%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   background-color: black;
+  animation: heroAnimation 500ms ease-in;
 
   .agentContainer__info {
     opacity: 0;
@@ -100,6 +114,7 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
     width: 100%;
     transition: 500ms;
     transform: translateX(-20px);
+    color: $accent;
 
     &:hover {
       opacity: 1;
@@ -124,20 +139,30 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
     }
 
     .agentContainer__desc {
-      height: 20%;
+      height: 15%;
       padding: 20px 50px 0px 50px;
+      margin-bottom: 10px;
     }
     .agentContainer__abilities {
-      height: 70%;
-      p {
+      height: 75%;
+
+      .agentAbilityName {
+        font-weight: bold;
         margin-bottom: 10px;
         padding: 0 50px;
+      }
+
+      .agentAbilityDesc {
+        font-size: 11px;
+        margin-bottom: 10px;
+        padding: 0 50px;
+        font-style: italic;
       }
     }
   }
 }
 
-.agentsHeader {
+.mainHeader {
   color: $hoverPrimaryBG;
   height: 60px;
   text-decoration: underline;
@@ -146,28 +171,8 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
   justify-content: center;
   padding: 30px 0;
   background-color: black;
-}
-
-.mapsHeader {
-  color: $hoverPrimaryBG;
-  height: 60px;
-  text-decoration: underline;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 0;
-  background-color: black;
-}
-
-.weaponsHeader {
-  color: $hoverPrimaryBG;
-  height: 60px;
-  text-decoration: underline;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 0;
-  background-color: black;
+  width: 100vw;
+  padding-top: 100px;
 }
 
 .mapContainer {
@@ -178,6 +183,7 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
   background-repeat: no-repeat;
   background-color: black;
   color: white;
+  animation: heroAnimation 500ms ease-in;
   .coords {
     font-size: 12px;
     font-style: italic;
@@ -195,7 +201,7 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
   height: 400px;
   width: 100%;
   background-color: black;
-
+  animation: heroAnimation 500ms ease-in;
   border-bottom: 3px solid $hoverPrimaryBG;
 
   h1 {
@@ -241,15 +247,18 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
 
 .menuOverlay {
   display: none;
+  z-index: 2;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   opacity: 0.9;
   top: 0;
-  width: 100vw;
-  height: 100ch;
+  right: 0;
+  width: 70%;
+  height: 100%;
   background-color: $hoverPrimaryBG;
+  animation: menuOverlayAnimation 500ms ease-in-out;
 
   button {
     color: rgb(0, 0, 0);
@@ -270,15 +279,88 @@ $hoverPrimaryTxt: rgb(223, 223, 223);
       color: $hoverPrimaryTxt;
       font-size: 30px;
       font-weight: bold;
-      box-shadow: 2px 1px white;
     }
+  }
+}
+
+.sprayContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  border-bottom: 3px solid $hoverPrimaryBG;
+  animation: heroAnimation 500ms ease-in;
+  h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    font-size: 30px;
+    background-color: $hoverPrimaryBG;
+    width: 80%;
   }
 }
 
 .show {
   display: flex;
 }
-
+.exit {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
 .exit:hover {
   cursor: pointer;
+}
+
+.backToTop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: $hoverPrimaryBG;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  opacity: 0.35;
+  transition: 300ms;
+  &:hover {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  p {
+    margin-top: 10px;
+  }
+}
+
+@keyframes menuOverlayAnimation {
+  from {
+    transform: translateX(400px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes heroAnimation {
+  from {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
 }

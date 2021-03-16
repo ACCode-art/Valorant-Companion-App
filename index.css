@@ -3,7 +3,18 @@
   font-family: "Recursive", sans-serif;
 }
 
+body {
+  background-color: black;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .header {
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -14,10 +25,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0 5%;
   height: 80px;
   background-color: black;
-  border-bottom: 1px solid #e05b5b;
+  border-bottom: 1px solid #dc3d4b;
 }
 
 .header .header__left img {
@@ -25,6 +35,7 @@
   height: 50px;
   -webkit-transition: 500ms;
   transition: 500ms;
+  margin-left: 40px;
 }
 
 .header .header__left img:hover {
@@ -39,22 +50,25 @@
   width: 50px;
   -webkit-transition: 300ms;
   transition: 300ms;
+  margin-right: 40px;
 }
 
 .header .header__right .menu:hover {
   cursor: pointer;
-  border: 1px solid #e05b5b;
-  -webkit-filter: invert(0%);
-  filter: invert(0%);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .indexHero {
   width: 100%;
   background-color: black;
+  padding-top: 90px;
 }
 
 .indexHero img {
   width: 100%;
+  -webkit-animation: heroAnimation 500ms ease-in;
+          animation: heroAnimation 500ms ease-in;
 }
 
 .indexButtons {
@@ -86,28 +100,28 @@
   transition: 300ms;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid #e05b5b;
+  border: 2px solid #dc3d4b;
 }
 
 .indexButtons button:hover {
   cursor: pointer;
-  background-color: #e05b5b;
+  background-color: #dc3d4b;
   -webkit-transform: translateX(10px);
           transform: translateX(10px);
   color: #dfdfdf;
   font-size: 20px;
   font-weight: bold;
-  -webkit-box-shadow: 2px 1px white;
-          box-shadow: 2px 1px white;
 }
 
 .agentContainer {
-  height: 500px;
+  height: 700px;
   width: 100%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
   background-color: black;
+  -webkit-animation: heroAnimation 500ms ease-in;
+          animation: heroAnimation 500ms ease-in;
 }
 
 .agentContainer .agentContainer__info {
@@ -118,6 +132,7 @@
   transition: 500ms;
   -webkit-transform: translateX(-20px);
           transform: translateX(-20px);
+  color: white;
 }
 
 .agentContainer .agentContainer__info:hover {
@@ -125,7 +140,7 @@
   cursor: pointer;
   -webkit-backdrop-filter: blur(5px);
           backdrop-filter: blur(5px);
-  background-color: rgba(224, 91, 91, 0.726);
+  background-color: rgba(250, 68, 83, 0.603);
   -webkit-transform: translateX(0px);
           transform: translateX(0px);
 }
@@ -152,38 +167,30 @@
 }
 
 .agentContainer .agentContainer__info .agentContainer__desc {
-  height: 20%;
+  height: 15%;
   padding: 20px 50px 0px 50px;
+  margin-bottom: 10px;
 }
 
 .agentContainer .agentContainer__info .agentContainer__abilities {
-  height: 70%;
+  height: 75%;
 }
 
-.agentContainer .agentContainer__info .agentContainer__abilities p {
+.agentContainer .agentContainer__info .agentContainer__abilities .agentAbilityName {
+  font-weight: bold;
   margin-bottom: 10px;
   padding: 0 50px;
 }
 
-.agentsHeader {
-  color: #e05b5b;
-  height: 60px;
-  text-decoration: underline;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 30px 0;
-  background-color: black;
+.agentContainer .agentContainer__info .agentContainer__abilities .agentAbilityDesc {
+  font-size: 11px;
+  margin-bottom: 10px;
+  padding: 0 50px;
+  font-style: italic;
 }
 
-.mapsHeader {
-  color: #e05b5b;
+.mainHeader {
+  color: #dc3d4b;
   height: 60px;
   text-decoration: underline;
   display: -webkit-box;
@@ -197,23 +204,8 @@
           justify-content: center;
   padding: 30px 0;
   background-color: black;
-}
-
-.weaponsHeader {
-  color: #e05b5b;
-  height: 60px;
-  text-decoration: underline;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 30px 0;
-  background-color: black;
+  width: 100vw;
+  padding-top: 100px;
 }
 
 .mapContainer {
@@ -224,6 +216,8 @@
   background-repeat: no-repeat;
   background-color: black;
   color: white;
+  -webkit-animation: heroAnimation 500ms ease-in;
+          animation: heroAnimation 500ms ease-in;
 }
 
 .mapContainer .coords {
@@ -243,7 +237,9 @@
   height: 400px;
   width: 100%;
   background-color: black;
-  border-bottom: 3px solid #e05b5b;
+  -webkit-animation: heroAnimation 500ms ease-in;
+          animation: heroAnimation 500ms ease-in;
+  border-bottom: 3px solid #dc3d4b;
 }
 
 .weaponsContainer h1 {
@@ -258,7 +254,7 @@
           justify-content: center;
   height: 50px;
   width: 200px;
-  border: 1px solid #e05b5b;
+  border: 1px solid #dc3d4b;
 }
 
 .weaponsContainerTop {
@@ -315,11 +311,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: #e05b5b;
+  color: #dc3d4b;
 }
 
 .menuOverlay {
   display: none;
+  z-index: 2;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -330,12 +327,15 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
+  position: fixed;
   opacity: 0.9;
   top: 0;
-  width: 100vw;
-  height: 100ch;
-  background-color: #e05b5b;
+  right: 0;
+  width: 70%;
+  height: 100%;
+  background-color: #dc3d4b;
+  -webkit-animation: menuOverlayAnimation 500ms ease-in-out;
+          animation: menuOverlayAnimation 500ms ease-in-out;
 }
 
 .menuOverlay button {
@@ -355,14 +355,49 @@
 
 .menuOverlay button:hover {
   cursor: pointer;
-  background-color: #e05b5b;
+  background-color: #dc3d4b;
   -webkit-transform: translateX(10px);
           transform: translateX(10px);
   color: #dfdfdf;
   font-size: 30px;
   font-weight: bold;
-  -webkit-box-shadow: 2px 1px white;
-          box-shadow: 2px 1px white;
+}
+
+.sprayContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  border-bottom: 3px solid #dc3d4b;
+  -webkit-animation: heroAnimation 500ms ease-in;
+          animation: heroAnimation 500ms ease-in;
+}
+
+.sprayContainer h2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+  font-size: 30px;
+  background-color: #dc3d4b;
+  width: 80%;
 }
 
 .show {
@@ -371,7 +406,104 @@
   display: flex;
 }
 
+.exit {
+  height: 50px;
+  width: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid black;
+}
+
 .exit:hover {
   cursor: pointer;
+}
+
+.backToTop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  background-color: #dc3d4b;
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+  opacity: 0.35;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.backToTop:hover {
+  opacity: 1;
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+}
+
+.backToTop p {
+  margin-top: 10px;
+}
+
+@-webkit-keyframes menuOverlayAnimation {
+  from {
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes menuOverlayAnimation {
+  from {
+    -webkit-transform: translateX(400px);
+            transform: translateX(400px);
+  }
+  to {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes heroAnimation {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-400px);
+            transform: translateX(-400px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@keyframes heroAnimation {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-400px);
+            transform: translateX(-400px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
 }
 /*# sourceMappingURL=index.css.map */
