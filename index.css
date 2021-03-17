@@ -12,10 +12,6 @@ body::-webkit-scrollbar {
 }
 
 .header {
-  position: fixed;
-  z-index: 1;
-  width: 100vw;
-  color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -25,6 +21,10 @@ body::-webkit-scrollbar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: fixed;
+  z-index: 1;
+  width: 100vw;
+  color: white;
   height: 80px;
   background-color: black;
   border-bottom: 1px solid #dc3d4b;
@@ -47,16 +47,14 @@ body::-webkit-scrollbar {
 .header .header__right .menu {
   -webkit-filter: invert(100%);
   filter: invert(100%);
-  width: 50px;
+  width: 70px;
   -webkit-transition: 300ms;
   transition: 300ms;
-  margin-right: 40px;
+  margin-right: 30px;
 }
 
 .header .header__right .menu:hover {
   cursor: pointer;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
 }
 
 .indexHero {
@@ -75,12 +73,12 @@ body::-webkit-scrollbar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -100,7 +98,7 @@ body::-webkit-scrollbar {
   transition: 300ms;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid #dc3d4b;
+  border: 1px solid #dfdfdf;
 }
 
 .indexButtons button:hover {
@@ -114,38 +112,25 @@ body::-webkit-scrollbar {
 }
 
 .agentContainer {
-  height: 700px;
   width: 100%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: #dc3d4b;
   -webkit-animation: heroAnimation 500ms ease-in;
           animation: heroAnimation 500ms ease-in;
+  margin-bottom: 10px;
 }
 
-.agentContainer .agentContainer__info {
-  opacity: 0;
-  height: 100%;
+.agentContainer .agentContainer__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 23%;
   width: 100%;
-  -webkit-transition: 500ms;
-  transition: 500ms;
-  -webkit-transform: translateX(-20px);
-          transform: translateX(-20px);
-  color: white;
 }
 
-.agentContainer .agentContainer__info:hover {
-  opacity: 1;
-  cursor: pointer;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  background-color: rgba(250, 68, 83, 0.603);
-  -webkit-transform: translateX(0px);
-          transform: translateX(0px);
-}
-
-.agentContainer .agentContainer__info .agentContainer__top {
+.agentContainer .agentContainer__top .agentContainer__topLeft {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -155,57 +140,64 @@ body::-webkit-scrollbar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 10%;
-  width: 100%;
-  font-size: 30px;
-  font-weight: bold;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
-.agentContainer .agentContainer__info .agentContainer__top img {
-  width: 30px;
-  margin-left: 20px;
+.agentContainer .agentContainer__top .agentContainer__topLeft img {
+  width: 80%;
+  height: 80%;
+  -webkit-box-shadow: 6px 5px rgba(0, 0, 0, 0.24);
+          box-shadow: 6px 5px rgba(0, 0, 0, 0.24);
 }
 
-.agentContainer .agentContainer__info .agentContainer__desc {
-  height: 15%;
-  padding: 20px 50px 0px 50px;
+.agentContainer .agentContainer__top .agentContainer__topRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.agentContainer .agentContainer__top .agentContainer__topRight p {
+  font-size: 12px;
+  padding: 5px;
+}
+
+.agentContainer .agentContainer__bottom {
+  font-size: 14px;
+  color: white;
+  min-height: 300px;
+  padding: 0 5%;
+  padding-bottom: 10px;
+}
+
+.agentContainer .agentContainer__bottom h1 {
+  text-align: center;
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+.agentContainer .agentContainer__bottom p {
   margin-bottom: 10px;
-}
-
-.agentContainer .agentContainer__info .agentContainer__abilities {
-  height: 75%;
-}
-
-.agentContainer .agentContainer__info .agentContainer__abilities .agentAbilityName {
-  font-weight: bold;
-  margin-bottom: 10px;
-  padding: 0 50px;
-}
-
-.agentContainer .agentContainer__info .agentContainer__abilities .agentAbilityDesc {
-  font-size: 11px;
-  margin-bottom: 10px;
-  padding: 0 50px;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.746);
   font-style: italic;
 }
 
-.mainHeader {
-  color: #dc3d4b;
-  height: 60px;
-  text-decoration: underline;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  padding: 30px 0;
-  background-color: black;
-  width: 100vw;
-  padding-top: 100px;
+.agentContainer .agentContainer__bottom .abilityName {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  font-style: normal;
 }
 
 .mapContainer {
@@ -246,12 +238,12 @@ body::-webkit-scrollbar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 50px;
   width: 200px;
   border: 1px solid #dc3d4b;
@@ -284,9 +276,6 @@ body::-webkit-scrollbar {
 }
 
 .weaponsContainerBottom .bottom__left {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -296,12 +285,12 @@ body::-webkit-scrollbar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 .weaponsContainerBottom .bottom__right {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -311,6 +300,9 @@ body::-webkit-scrollbar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   color: #dc3d4b;
 }
 
@@ -328,10 +320,9 @@ body::-webkit-scrollbar {
       -ms-flex-align: center;
           align-items: center;
   position: fixed;
-  opacity: 0.9;
   top: 0;
   right: 0;
-  width: 70%;
+  width: 100%;
   height: 100%;
   background-color: #dc3d4b;
   -webkit-animation: menuOverlayAnimation 500ms ease-in-out;
@@ -407,17 +398,17 @@ body::-webkit-scrollbar {
 }
 
 .exit {
-  height: 50px;
-  width: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 50px;
+  width: 50px;
   border: 1px solid black;
 }
 
@@ -457,6 +448,25 @@ body::-webkit-scrollbar {
 
 .backToTop p {
   margin-top: 10px;
+}
+
+.mainHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #dc3d4b;
+  height: 20px;
+  text-decoration: underline;
+  padding: 30px 0;
+  background-color: black;
+  width: 100vw;
+  padding-top: 100px;
 }
 
 @-webkit-keyframes menuOverlayAnimation {

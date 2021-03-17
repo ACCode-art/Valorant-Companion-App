@@ -11,19 +11,28 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+// mixins
+
+@mixin display-flex($justify-content) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: center;
+}
+
+// color variables
+
 $hoverPrimaryBG: #dc3d4b;
 $hoverPrimaryBGOP: rgba(250, 68, 83, 0.603);
 $hoverPrimaryTxt: rgb(223, 223, 223);
 $accent: rgb(255, 255, 255);
 
 .header {
+  @include display-flex(space-between);
+
   position: fixed;
   z-index: 1;
   width: 100vw;
   color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   height: 80px;
   background-color: black;
   border-bottom: 1px solid $hoverPrimaryBG;
@@ -46,13 +55,12 @@ $accent: rgb(255, 255, 255);
     .menu {
       -webkit-filter: invert(100%);
       filter: invert(100%);
-      width: 50px;
+      width: 70px;
       transition: 300ms;
-      margin-right: 40px;
+      margin-right: 30px;
 
       &:hover {
         cursor: pointer;
-        transform: scale(1.2);
       }
     }
   }
@@ -70,9 +78,7 @@ $accent: rgb(255, 255, 255);
 }
 
 .indexButtons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include display-flex(center);
   flex-direction: column;
   height: 55.5vh;
   background-color: black;
@@ -87,7 +93,7 @@ $accent: rgb(255, 255, 255);
     transition: 300ms;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0);
-    border: 2px solid $hoverPrimaryBG;
+    border: 1px solid $hoverPrimaryTxt;
     &:hover {
       cursor: pointer;
       background-color: $hoverPrimaryBG;
@@ -100,79 +106,62 @@ $accent: rgb(255, 255, 255);
 }
 
 .agentContainer {
-  height: 700px;
   width: 100%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: $hoverPrimaryBG;
   animation: heroAnimation 500ms ease-in;
+  margin-bottom: 10px;
 
-  .agentContainer__info {
-    opacity: 0;
-    height: 100%;
+  .agentContainer__top {
+    display: flex;
+    height: 23%;
     width: 100%;
-    transition: 500ms;
-    transform: translateX(-20px);
-    color: $accent;
 
-    &:hover {
-      opacity: 1;
-      cursor: pointer;
-      backdrop-filter: blur(5px);
-      background-color: $hoverPrimaryBGOP;
-      transform: translateX(0px);
-    }
-    .agentContainer__top {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 10%;
-      width: 100%;
-      font-size: 30px;
-      font-weight: bold;
-
+    .agentContainer__topLeft {
+      @include display-flex(center);
+      flex: 1;
       img {
-        width: 30px;
-        margin-left: 20px;
+        width: 80%;
+        height: 80%;
+        box-shadow: 6px 5px rgba(0, 0, 0, 0.24);
       }
     }
-
-    .agentContainer__desc {
-      height: 15%;
-      padding: 20px 50px 0px 50px;
-      margin-bottom: 10px;
-    }
-    .agentContainer__abilities {
-      height: 75%;
-
-      .agentAbilityName {
-        font-weight: bold;
-        margin-bottom: 10px;
-        padding: 0 50px;
-      }
-
-      .agentAbilityDesc {
-        font-size: 11px;
-        margin-bottom: 10px;
-        padding: 0 50px;
-        font-style: italic;
+    .agentContainer__topRight {
+      @include display-flex(center);
+      flex: 1;
+      p {
+        font-size: 12px;
+        padding: 5px;
       }
     }
   }
-}
 
-.mainHeader {
-  color: $hoverPrimaryBG;
-  height: 60px;
-  text-decoration: underline;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 0;
-  background-color: black;
-  width: 100vw;
-  padding-top: 100px;
+  .agentContainer__bottom {
+    font-size: 14px;
+    color: white;
+    min-height: 300px;
+    padding: 0 5%;
+    padding-bottom: 10px;
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+      text-decoration: underline;
+    }
+    p {
+      margin-bottom: 10px;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.746);
+      font-style: italic;
+    }
+    .abilityName {
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      font-style: normal;
+    }
+  }
 }
 
 .mapContainer {
@@ -205,9 +194,7 @@ $accent: rgb(255, 255, 255);
   border-bottom: 3px solid $hoverPrimaryBG;
 
   h1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include display-flex(center);
     height: 50px;
     width: 200px;
     border: 1px solid $hoverPrimaryBG;
@@ -215,9 +202,7 @@ $accent: rgb(255, 255, 255);
 }
 
 .weaponsContainerTop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include display-flex(center);
   height: 50%;
   width: 100%;
 
@@ -231,16 +216,12 @@ $accent: rgb(255, 255, 255);
   width: 100%;
 
   .bottom__left {
+    @include display-flex(center);
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .bottom__right {
+    @include display-flex(center);
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: $hoverPrimaryBG;
   }
 }
@@ -252,10 +233,9 @@ $accent: rgb(255, 255, 255);
   justify-content: center;
   align-items: center;
   position: fixed;
-  opacity: 0.9;
   top: 0;
   right: 0;
-  width: 70%;
+  width: 100%;
   height: 100%;
   background-color: $hoverPrimaryBG;
   animation: menuOverlayAnimation 500ms ease-in-out;
@@ -296,9 +276,7 @@ $accent: rgb(255, 255, 255);
   border-bottom: 3px solid $hoverPrimaryBG;
   animation: heroAnimation 500ms ease-in;
   h2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include display-flex(center);
     margin-bottom: 30px;
     font-size: 30px;
     background-color: $hoverPrimaryBG;
@@ -306,15 +284,15 @@ $accent: rgb(255, 255, 255);
   }
 }
 
+//universal styling
+
 .show {
   display: flex;
 }
 .exit {
+  @include display-flex(center);
   height: 50px;
   width: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   border: 1px solid black;
 }
 .exit:hover {
@@ -322,9 +300,7 @@ $accent: rgb(255, 255, 255);
 }
 
 .backToTop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include display-flex(center);
   position: fixed;
   bottom: 0;
   right: 0;
@@ -344,6 +320,19 @@ $accent: rgb(255, 255, 255);
     margin-top: 10px;
   }
 }
+
+.mainHeader {
+  @include display-flex(center);
+  color: $hoverPrimaryBG;
+  height: 20px;
+  text-decoration: underline;
+  padding: 30px 0;
+  background-color: black;
+  width: 100vw;
+  padding-top: 100px;
+}
+
+//keyframes
 
 @keyframes menuOverlayAnimation {
   from {

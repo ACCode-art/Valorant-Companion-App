@@ -24,31 +24,27 @@ const loadAPI = async () => {
       characterTags,
     } = agent;
 
-    const HTML = `<div
-    class="agentContainer"
-    style="
-      background-image: url(${fullPortrait});
-    "
-  >
-    <div class="agentContainer__info">
-      <div class="agentContainer__top">
-        <p>${displayName}</p>
-        <img src=${displayIconSmall}></img>
-
+    const HTML = `<div class="agentContainer">
+    <div class="agentContainer__top">
+      <div class="agentContainer__topLeft">
+        <img
+          src=${displayIconSmall}
+          alt=""
+        />
       </div>
-      <div class="agentContainer__desc">
-      ${description}
-      </div>
-      <div class="agentContainer__abilities">
-        ${abilities
-          .map((ability) => {
-            return `<p class='agentAbilityName'>${ability.displayName}</p><p class= agentAbilitydesc>${ability.description}</p>`;
-          })
-          .join("")}
+      <div class="agentContainer__topRight">
+       <p>${description}</p>
       </div>
     </div>
+    <div class="agentContainer__bottom">
+      <h1>${displayName}</h1>
+      ${abilities
+        .map((ability) => {
+          return `<p class='abilityName'>${ability.displayName}</p><p>${ability.description}</p>`;
+        })
+        .join("")}
+    </div>
   </div>`;
-
     indexAgents.insertAdjacentHTML("afterbegin", HTML);
   });
 };
@@ -129,9 +125,9 @@ const loadSprayAPI = async () => {
 };
 
 loadAPI();
-loadMapsAPI();
+/* loadMapsAPI();
 loadWeaponsAPI();
-loadSprayAPI();
+loadSprayAPI(); */
 
 button.forEach((e) => {
   const linkText = e.textContent.toLowerCase();
