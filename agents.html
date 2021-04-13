@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Recursive&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Recursive&display=swap');
     </style>
     <title>Valorant-Info-App</title>
   </head>
@@ -26,7 +26,14 @@
         />
       </div>
     </div>
-    <h1 class="mainHeader headerMargin">Agents</h1>
+
+    <div class="agentsMain">
+      <div class="agentsMain__left"></div>
+      <div class="agentsMain__right">
+        <p>Click on a portrait for more info...</p>
+      </div>
+    </div>
+
     <div class="indexAgents"></div>
     <div class="menuOverlay">
       <button>Agents</button>
@@ -36,7 +43,7 @@
       <button>Player Cards</button>
       <h1 class="exit">X</h1>
     </div>
-    <a class="backToTop" href="#"><p>^</p></a>
+
     <script src="/script.js"></script>
   </body>
 </html>

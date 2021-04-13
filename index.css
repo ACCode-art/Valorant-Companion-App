@@ -1,6 +1,8 @@
 * {
   margin: 0;
-  font-family: "Recursive", sans-serif;
+  font-family: 'Recursive', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -21,11 +23,10 @@ body::-webkit-scrollbar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  position: fixed;
   z-index: 1;
   width: 100vw;
   color: white;
-  height: 80px;
+  height: 8vh;
   background-color: black;
   border-bottom: 1px solid #dc3d4b;
 }
@@ -111,26 +112,83 @@ body::-webkit-scrollbar {
   font-weight: bold;
 }
 
-.agentContainer {
-  width: 100%;
+.agentsMain {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 92vh;
+  background-color: black;
+}
+
+.agentsMain .agentsMain__left {
+  -webkit-box-flex: 0.5;
+      -ms-flex: 0.5;
+          flex: 0.5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
+.agentsMain .agentsMain__left .agentContainer {
+  height: 200px;
+  width: 200px;
+  margin: 10px;
   background-position: center;
   background-size: contain;
-  background-repeat: no-repeat;
-  background-color: #dc3d4b;
-  -webkit-animation: heroAnimation 500ms ease-in;
-          animation: heroAnimation 500ms ease-in;
-  margin-bottom: 10px;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  -webkit-animation: heroAnimation 1000ms ease-in-out;
+          animation: heroAnimation 1000ms ease-in-out;
 }
 
-.agentContainer .agentContainer__top {
+.agentsMain .agentsMain__left .agentContainer:hover {
+  -webkit-transform: translateY(-3px);
+          transform: translateY(-3px);
+  cursor: pointer;
+  -webkit-box-shadow: 5px 3px #dc3d4b;
+          box-shadow: 5px 3px #dc3d4b;
+}
+
+.agentsMain .agentsMain__left .agentContainer .agentInformation {
+  font-size: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 23%;
+  color: white;
+  opacity: 0;
   width: 100%;
+  height: 100%;
+  background-color: black;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.agentContainer .agentContainer__top .agentContainer__topLeft {
+.agentsMain .agentsMain__left .agentContainer .agentInformation:hover {
+  opacity: 1;
+}
+
+.agentsMain .agentsMain__left::-webkit-scrollbar {
+  width: 5px;
+}
+
+.agentsMain .agentsMain__left::-webkit-scrollbar-thumb {
+  background-color: #dc3d4b;
+}
+
+.agentsMain .agentsMain__right {
+  color: #dc3d4b;
+  -webkit-box-flex: 0.5;
+      -ms-flex: 0.5;
+          flex: 0.5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -140,19 +198,11 @@ body::-webkit-scrollbar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
 }
 
-.agentContainer .agentContainer__top .agentContainer__topLeft img {
-  width: 80%;
-  height: 80%;
-  -webkit-box-shadow: 6px 5px rgba(0, 0, 0, 0.24);
-          box-shadow: 6px 5px rgba(0, 0, 0, 0.24);
-}
-
-.agentContainer .agentContainer__top .agentContainer__topRight {
+.agentsMain .agentsMain__right .agentMore {
+  -webkit-animation: heroAnimation 1000ms ease-in-out;
+          animation: heroAnimation 1000ms ease-in-out;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -162,42 +212,26 @@ body::-webkit-scrollbar {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #dc3d4b;
+  height: 100%;
+  padding: 0 100px;
 }
 
-.agentContainer .agentContainer__top .agentContainer__topRight p {
-  font-size: 12px;
-  padding: 5px;
+.agentsMain .agentsMain__right .agentMore img {
+  width: 400px;
+  margin-bottom: 20px;
 }
 
-.agentContainer .agentContainer__bottom {
-  font-size: 14px;
-  color: white;
-  min-height: 300px;
-  padding: 0 5%;
-  padding-bottom: 10px;
+.agentsMain .agentsMain__right .agentMore .agentMore__name {
+  font-size: 50px;
 }
 
-.agentContainer .agentContainer__bottom h1 {
-  text-align: center;
-  margin-top: 10px;
-  text-decoration: underline;
-}
-
-.agentContainer .agentContainer__bottom p {
-  margin-bottom: 10px;
-  margin-top: 10px;
-  color: rgba(255, 255, 255, 0.746);
-  font-style: italic;
-}
-
-.agentContainer .agentContainer__bottom .abilityName {
-  font-size: 16px;
-  font-weight: bold;
-  color: white;
-  font-style: normal;
+.no-show {
+  display: none;
 }
 
 .mapContainer {

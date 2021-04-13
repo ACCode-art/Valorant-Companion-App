@@ -1,15 +1,18 @@
-const indexAgents = document.querySelector(".indexAgents");
-const indexMaps = document.querySelector(".indexMaps");
-const indexWeapons = document.querySelector(".indexWeapons");
-const indexSprays = document.querySelector(".indexSprays");
-const button = document.querySelectorAll("button");
+const indexAgents = document.querySelector('.indexAgents');
+const indexMaps = document.querySelector('.indexMaps');
+const indexWeapons = document.querySelector('.indexWeapons');
+const indexSprays = document.querySelector('.indexSprays');
+const button = document.querySelectorAll('button');
 
-const menu = document.querySelector(".menu");
-const exit = document.querySelector(".exit");
-const menuOverlay = document.querySelector(".menuOverlay");
+const menu = document.querySelector('.menu');
+const exit = document.querySelector('.exit');
+const menuOverlay = document.querySelector('.menuOverlay');
+
+const agentsMain__left = document.querySelector('.agentsMain__left');
+const agentsMain__right = document.querySelector('.agentsMain__right');
 
 const loadAPI = async () => {
-  const res = await fetch("https://valorant-api.com/v1/agents");
+  const res = await fetch('https://valorant-api.com/v1/agents');
   info = await res.json();
 
   const { data } = info;
@@ -24,33 +27,57 @@ const loadAPI = async () => {
       characterTags,
     } = agent;
 
-    const HTML = `<div class="agentContainer">
-    <div class="agentContainer__top">
-      <div class="agentContainer__topLeft">
-        <img
-          src=${displayIconSmall}
-          alt=""
-        />
-      </div>
-      <div class="agentContainer__topRight">
-       <p>${description}</p>
-      </div>
+    const HTML = `<div
+    class="agentContainer"
+    style="
+      background-image: url(${displayIconSmall});
+    "
+    >
+    <div class="agentInformation">
+      <p>${displayName}</p>
+      <div class="no-show">
+      <img class="no-showImg" src=${fullPortrait} alt="" />
+      <p class="no-showDesc">
+      ${description}</p>
+    
     </div>
-    <div class="agentContainer__bottom">
-      <h1>${displayName}</h1>
-      ${abilities
-        .map((ability) => {
-          return `<p class='abilityName'>${ability.displayName}</p><p>${ability.description}</p>`;
-        })
-        .join("")}
-    </div>
-  </div>`;
-    indexAgents.insertAdjacentHTML("afterbegin", HTML);
+
+   
+  
+  </div>
+
+    </div>`;
+
+    agentsMain__left.insertAdjacentHTML('afterbegin', HTML);
   });
 };
 
+agentsMain__left.addEventListener('click', (event) => {
+  const ai = event.target.closest('.agentInformation');
+  const desc = ai.querySelector('.no-showDesc').textContent.trim();
+  const img = ai.querySelector('.no-showImg').src;
+
+  const name = ai.querySelector('p').textContent;
+
+  const HTML = `<div class="agentMore">
+  <p class='agentMore__name'>${name}</p>
+  <img
+    class="agentMore__img"
+    src=${img}
+    alt=""
+  />
+  <div class="agentMore__desc">
+    <p>
+    ${desc}
+    </p>
+  </div>
+</div>`;
+
+  agentsMain__right.innerHTML = HTML;
+});
+
 const loadMapsAPI = async () => {
-  const res = await fetch("https://valorant-api.com/v1/maps");
+  const res = await fetch('https://valorant-api.com/v1/maps');
   info = await res.json();
 
   const { data } = info;
@@ -66,12 +93,12 @@ const loadMapsAPI = async () => {
  <p>${displayName}</p>
  <p class='coords'>${coordinates}</p>
 </div>`;
-    indexMaps.insertAdjacentHTML("afterbegin", HTML);
+    indexMaps.insertAdjacentHTML('afterbegin', HTML);
   });
 };
 
 const loadWeaponsAPI = async () => {
-  const res = await fetch("https://valorant-api.com/v1/weapons");
+  const res = await fetch('https://valorant-api.com/v1/weapons');
   info = await res.json();
 
   const { data } = info;
@@ -98,12 +125,12 @@ const loadWeaponsAPI = async () => {
       </div>
     </div>
   </div>`;
-    indexWeapons.insertAdjacentHTML("afterbegin", HTML);
+    indexWeapons.insertAdjacentHTML('afterbegin', HTML);
   });
 };
 
 const loadSprayAPI = async () => {
-  const res = await fetch("https://valorant-api.com/v1/sprays");
+  const res = await fetch('https://valorant-api.com/v1/sprays');
   info = await res.json();
 
   const { data } = info;
@@ -120,7 +147,7 @@ const loadSprayAPI = async () => {
     <h2>${displayName}</h2>
   </div>`;
 
-    indexSprays.insertAdjacentHTML("afterbegin", HTML);
+    indexSprays.insertAdjacentHTML('afterbegin', HTML);
   });
 };
 
@@ -131,15 +158,15 @@ loadSprayAPI(); */
 
 button.forEach((e) => {
   const linkText = e.textContent.toLowerCase();
-  e.addEventListener("click", () => {
+  e.addEventListener('click', () => {
     location.href = linkText;
   });
 });
 
-menu.addEventListener("click", () => {
-  menuOverlay.classList.toggle("show");
+menu.addEventListener('click', () => {
+  menuOverlay.classList.toggle('show');
 });
 
-exit.addEventListener("click", () => {
-  menuOverlay.classList.toggle("show");
+exit.addEventListener('click', () => {
+  menuOverlay.classList.toggle('show');
 });

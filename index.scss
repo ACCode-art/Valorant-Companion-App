@@ -1,6 +1,7 @@
 * {
   margin: 0;
-  font-family: "Recursive", sans-serif;
+  font-family: 'Recursive', sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -29,11 +30,10 @@ $accent: rgb(255, 255, 255);
 .header {
   @include display-flex(space-between);
 
-  position: fixed;
   z-index: 1;
   width: 100vw;
   color: white;
-  height: 80px;
+  height: 8vh;
   background-color: black;
   border-bottom: 1px solid $hoverPrimaryBG;
 
@@ -105,63 +105,90 @@ $accent: rgb(255, 255, 255);
   }
 }
 
-.agentContainer {
-  width: 100%;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: $hoverPrimaryBG;
-  animation: heroAnimation 500ms ease-in;
-  margin-bottom: 10px;
+.agentsMain {
+  display: flex;
+  height: 92vh;
+  background-color: rgb(0, 0, 0);
 
-  .agentContainer__top {
+  .agentsMain__left {
+    flex: 0.5;
     display: flex;
-    height: 23%;
-    width: 100%;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 
-    .agentContainer__topLeft {
-      @include display-flex(center);
-      flex: 1;
+    .agentContainer {
+      height: 200px;
+      width: 200px;
+      margin: 10px;
+      background-position: center;
+      background-size: contain;
+      transition: 300ms;
+      animation: heroAnimation 1000ms ease-in-out;
+
+      &:hover {
+        transform: translateY(-3px);
+        cursor: pointer;
+        box-shadow: 5px 3px $hoverPrimaryBG;
+      }
+
+      .agentInformation {
+        font-size: 30px;
+        display: flex;
+        color: white;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        transition: 300ms;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .agentsMain__left::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .agentsMain__left::-webkit-scrollbar-thumb {
+    background-color: $hoverPrimaryBG;
+  }
+
+  .agentsMain__right {
+    color: $hoverPrimaryBG;
+    flex: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .agentMore {
+      animation: heroAnimation 1000ms ease-in-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: $hoverPrimaryBG;
+      height: 100%;
+      padding: 0 100px;
+
       img {
-        width: 80%;
-        height: 80%;
-        box-shadow: 6px 5px rgba(0, 0, 0, 0.24);
+        width: 400px;
+        margin-bottom: 20px;
       }
-    }
-    .agentContainer__topRight {
-      @include display-flex(center);
-      flex: 1;
-      p {
-        font-size: 12px;
-        padding: 5px;
-      }
-    }
-  }
 
-  .agentContainer__bottom {
-    font-size: 14px;
-    color: white;
-    min-height: 300px;
-    padding: 0 5%;
-    padding-bottom: 10px;
-    h1 {
-      text-align: center;
-      margin-top: 10px;
-      text-decoration: underline;
-    }
-    p {
-      margin-bottom: 10px;
-      margin-top: 10px;
-      color: rgba(255, 255, 255, 0.746);
-      font-style: italic;
-    }
-    .abilityName {
-      font-size: 16px;
-      font-weight: bold;
-      color: white;
-      font-style: normal;
+      .agentMore__name {
+        font-size: 50px;
+      }
     }
   }
+}
+
+.no-show {
+  display: none;
 }
 
 .mapContainer {
